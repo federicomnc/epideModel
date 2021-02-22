@@ -15,7 +15,9 @@ def deriv(y, t, N, beta, gamma):
     dRdt = gamma * I
     return dSdt, dIdt, dRdt
 
+
 app = Flask(__name__)
+
 
 @app.route("/", methods=["POST", "GET"])
 def home():
@@ -28,6 +30,7 @@ def home():
     else:
         return render_template("form.html")
 
+
 @app.route("/<values>", methods=["GET"])
 def plotView(values):
     lista = values.split(",")
@@ -36,8 +39,8 @@ def plotView(values):
     r0_index = int(lista[2])
     R0 = 0
     S0 = N - I0 - R0
-    gamma=0.25
-    beta = r0_index*gamma
+    gamma = 0.25
+    beta = r0_index * gamma
     t = np.linspace(0, 50, 50)
     y0 = S0, I0, R0
     ret = odeint(deriv, y0, t, args=(N, beta, gamma))
