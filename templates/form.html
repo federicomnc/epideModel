@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Inserimento{% endblock title %}
+{% block content %}
+<h1>Inserisci valori</h1>
+<form action="#", method="post">
+    <p>Popolazione:</p>
+    <p><input type="number" name="pop" /></p>
+    <p>Infetti:</p>
+    <p><input type="number" name="i" /></p>
+    <p>Indice trasmissibilità</p>
+    <p><input type="number" name="r0" /></p>
+    <p><input type="submit" value="submit" /></p>
+</form>
+{% endblock content %}
