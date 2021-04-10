@@ -1,1 +1,11 @@
-/.idea
+__pycache__/
+instance/
+.webassets-cache
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.idea

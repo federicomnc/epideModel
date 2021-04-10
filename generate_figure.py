@@ -16,19 +16,19 @@ def deriv(y, t, N, beta, gamma):
     return dSdt, dIdt, dRdt
 
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 
 
 @app.route("/", methods=["POST", "GET"])
 def home():
-    if request.method == "POST":
-        popolazione = request.form["pop"]
-        infetti = request.form["i"]
-        r0_index = request.form["r0"]
+    if flask.request.method == "POST":
+        popolazione = flask.request.form["pop"]
+        infetti = flask.request.form["i"]
+        r0_index = flask.request.form["r0"]
         valori_di_input = popolazione + ',' + infetti + ',' + r0_index
-        return redirect(url_for("plotView", values=valori_di_input))
+        return flask.redirect(flask.url_for("plotView", values=valori_di_input))
     else:
-        return render_template("form.html")
+        return flask.render_template("form.html")
 
 
 @app.route("/<values>", methods=["GET"])
@@ -66,7 +66,7 @@ def plotView(values):
     pngImageB64String = "data:image/png;base64,"
     pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')
 
-    return render_template("image.html", image=pngImageB64String)
+    return flask.render_template("image.html", image=pngImageB64String)
 
 
 if __name__ == '__main__':
